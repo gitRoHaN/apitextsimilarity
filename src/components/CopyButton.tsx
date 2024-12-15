@@ -3,7 +3,6 @@
 import { ButtonHTMLAttributes, FC } from "react"
 import Button from "./ui/Button"
 import { toast } from "./ui/Toast"
-import { Copy } from "lucide-react"
 
 interface CopyButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     valueToCopy: string

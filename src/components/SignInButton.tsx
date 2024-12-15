@@ -4,9 +4,8 @@ import { FC, useState } from "react";
 import Button from "./ui/Button";
 import { toast } from "./ui/Toast";
 
-interface SignInButtonProps{}
 
-export const SignInButton:FC<SignInButtonProps>=({})=>{
+export const SignInButton:FC=({})=>{
     const [isLoading,setIsLoading]=useState<boolean>(false)
 
     const signInWithGoogle=async()=>{

@@ -1,14 +1,13 @@
 'use client'
-import { FC,useState,useEffect } from "react"
+import { FC} from "react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "./ui/DropdownMenu"
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import Button from "./ui/Button"
 import { Laptop, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-interface ThemeToggleProps{}
 
-export const ThemeToggle:FC<ThemeToggleProps>=({})=>{
+export const ThemeToggle:FC=({})=>{
     const {setTheme}=useTheme()
 
     return(

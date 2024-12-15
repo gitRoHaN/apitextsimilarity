@@ -1,7 +1,6 @@
 'use client'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "./ui/DropdownMenu";
 import { FC, useState } from "react";
-import { boolean } from "zod";
 import { DropdownMenuTrigger } from "./ui/DropdownMenu";
 import Button from "./ui/Button";
 import { Loader2 } from "lucide-react";
@@ -23,7 +22,7 @@ const ApiKeyOptions:FC<ApiKeyOptionsProps>=({apiKeyId,apiKeyKey})=>{
     const createNewApiKey=async()=>{
         setIsCreatingNew(true)
         try{
-            await revokeApiKey({keyId:apiKeyId})
+            await revokeApiKey()
             await createApiKey()
             router.refresh()
         }catch(error){
@@ -39,7 +38,7 @@ const ApiKeyOptions:FC<ApiKeyOptionsProps>=({apiKeyId,apiKeyKey})=>{
     const revokeCurrentApiKey=async()=>{
         setIsRevoking(true)
         try{
-            await revokeApiKey({keyId:apiKeyId})
+            await revokeApiKey()
             router.refresh()
         }catch(error){
             toast({

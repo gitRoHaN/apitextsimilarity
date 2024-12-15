@@ -1,6 +1,6 @@
 import { RevokeApiData } from "@/types/api"
 
-export async function revokeApiKey({keyId}:{keyId:string}){
+export async function revokeApiKey(){
     const res = await fetch('/api/api-key/revoke',{
         method:'POST',
         headers:{

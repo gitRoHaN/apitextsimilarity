@@ -3,7 +3,6 @@ import { authOptions } from "@/lib/auth"
 import { db } from "@/lib/db"
 import { getServerSession } from "next-auth"
 import { notFound } from "next/navigation"
-import { FC } from "react"
 import {formatDistance} from 'date-fns'
 import LargeHeading from "./ui/largeHeading"
 import Paragraph from "./ui/paragraph"

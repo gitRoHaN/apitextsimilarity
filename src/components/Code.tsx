@@ -3,6 +3,7 @@ import { FC ,useState,useEffect} from "react";
 import {type Language} from 'prism-react-renderer'
 import { useTheme } from "next-themes";
 import { Highlight } from "prism-react-renderer";
+  /* eslint-disable @typescript-eslint/no-var-requires */
 const darkTheme=require('prism-react-renderer').themes.nightOwl
 const lightTheme=require('prism-react-renderer').themes.nightOwlLight
 
