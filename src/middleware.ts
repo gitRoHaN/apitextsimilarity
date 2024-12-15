@@ -10,7 +10,7 @@ const redis=new Redis({
 })
 const ratelimit=new Ratelimit({
     redis,
-    limiter:Ratelimit.slidingWindow(5,'1 h')
+    limiter:Ratelimit.slidingWindow(50,'1 h')
 })
 
 export default withAuth( async function middleware(req){

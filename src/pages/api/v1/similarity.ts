@@ -1,6 +1,9 @@
 import { db } from "@/lib/db";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
+import { HfInference } from '@huggingface/inference'
+import dotProduct from "@/helpers/dotProduct";
+import { withMethods } from "@/lib/api-middlewares/with-methods";
 
 const reqSchema = z.object({
     text1:z.string().max(1000),
@@ -25,7 +28,17 @@ const handler = async (req:NextApiRequest,res:NextApiResponse)=>{
 
         const start = new Date()
 
-        const similarity=0.5;
+        const hf = new HfInference(process.env.HF_API_KEY)
+        const output1=await hf.featureExtraction({
+            model: "ggrn/e5-small-v2",
+            inputs: text1,
+          });
+        const output2=await hf.featureExtraction({
+            model: "ggrn/e5-small-v2",
+            inputs: text2,
+          });
+        
+        const similarity=dotProduct(output1,output2);
         const duration = new Date().getTime()-start.getTime()
 
          await db.apiRequest.create({
@@ -47,3 +60,5 @@ const handler = async (req:NextApiRequest,res:NextApiResponse)=>{
         return res.status(500).json({error:'Internal Server Error'})
     }
 }
+
+export default withMethods(['POST'],handler)
